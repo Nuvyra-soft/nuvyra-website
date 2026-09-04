@@ -1,0 +1,16 @@
+# Dependencies and generated bundles
+node_modules/
+dist/
+.vite/
+
+# Runtime configuration and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
