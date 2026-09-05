@@ -15,4 +15,10 @@ Migración del documento HTML a React con Vite. La página se divide en componen
 
 El almacenamiento del limitador de Express es local al proceso. Antes de desplegar varias instancias, configura un store compartido compatible con `express-rate-limit` (por ejemplo Redis); de otro modo cada instancia tendría su propio contador.
 
-El controlador devuelve `202` y está listo para conectar el proveedor aprobado de correo o CRM. No se registran mensajes ni datos personales por defecto.
+## Envío por correo con Resend
+
+El controlador usa la SDK oficial de Resend y solo devuelve `202` después de que Resend acepta el mensaje. Crea una API key en Resend y colócala en `RESEND_API_KEY` dentro de `.env`; nunca subas ese archivo al repositorio.
+
+Mientras se use `onboarding@resend.dev`, Resend solo permite enviar al correo asociado con la cuenta de Resend. Para enviar a otras direcciones será necesario verificar un dominio propio y cambiar `RESEND_FROM`.
+
+Si falta la API key, la API responde `503` en vez de mostrar un éxito falso. Los mensajes no se guardan en archivos ni bases de datos y los errores del servidor no registran datos personales.
